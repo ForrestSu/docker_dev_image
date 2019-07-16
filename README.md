@@ -3,6 +3,10 @@ This is a toolchain for c++ developer, build on centos 7.6, gcc v7.3.1, gdb v8.0
 
 ## Usage
 run `sh build_image.sh` will build a docker image named "uvframe".
+or directly build `docker build -t uvframe https://github.com/ForrestSu/centos_docker_toolchain.git`  
+means: `docker build -t uvframe .`  
+
+> docker run -it --rm --name frame uvframe bash
 
 ### Tools
 - gdb
