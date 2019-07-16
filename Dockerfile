@@ -1,6 +1,6 @@
 FROM centos/devtoolset-7-toolchain-centos7
 ENV TZ=Asia/Shanghai
-WORKDIR  /home/xunce
+WORKDIR  /home/test
 USER 0
 COPY pkgs .
 RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
