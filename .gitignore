@@ -1,0 +1,40 @@
+# eclipse
+.settings
+.project
+.cproject
+.classpath
+Default
+.metadata
+
+# IDEA
+.idea
+*.iml
+
+#vscode
+.vscode
+
+# vs projects
+.sln
+.vs
+
+#CMake
+build
+
+
+# java 
+.gradle
+*.class
+
+
+# Temporary documents 
+~$*.doc
+~$*.docx
+~$*.xlsx
+
+# compile cpp Temporary files
+*.o
+*.so
+*.bak
+
+# compress files
+*.zip
