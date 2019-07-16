@@ -14,6 +14,7 @@ means: `docker build -t uvframe .`
 - perf
 - tmux
 - zsh
+- cmake v3.12
 - ...
 
 ### Requirements
