@@ -8,6 +8,9 @@ means: `docker build -t uvframe .`
 
 > docker run -it --rm --name frame uvframe bash
 
+注意：
+> 指定coredump大小:  --ulimit core=-1
+
 ### Tools
 - gdb
 - htop
