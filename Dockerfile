@@ -10,7 +10,9 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && yum install -y libuv-devel make htop rsync pinfo strace iftop ethtool lsof perf git tree tmux zsh \
   && yum clean all -y \
   && yum localinstall *.rpm -y \
-  && rm -rf *.rpm
+  && rm -rf *.rpm \
+  && echo "*    soft    core    unlimited" >> /etc/security/limits.conf \
+  && echo "*    hard    core    unlimited" >> /etc/security/limits.conf
 
 ## USER 1001
-CMD ["bash"]
+CMD ["zsh"]
