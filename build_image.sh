@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t uvframe .
+docker build -t centos7-sq .
