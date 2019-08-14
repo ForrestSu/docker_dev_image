@@ -12,8 +12,9 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && yum clean all -y \
   && wget -nH -q ftp://192.168.0.41/Dev_Linux_3rd-20190806.zip && unzip -q -j *.zip \
   && yum localinstall *.rpm -y \
-  && rm -rf *.rpm *.zip\
-  && ldconfig 
+  && rm -rf *.rpm *.zip \
+  && ldconfig \
+  && usermod -s /bin/zsh root
 
 ## USER 1001
 CMD ["zsh"]
