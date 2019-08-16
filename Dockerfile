@@ -7,8 +7,10 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && yum makecache \
   && yum -y install epel-release \
   && yum install -y htop rsync pinfo strace iftop ethtool dsniff net-tools nc \
-    lsof perf tree wget unzip p7zip  tmux zsh make git vim \
+    lsof perf tree wget unzip p7zip  zsh make git vim \
     openssl openssl-devel curl curl-devel \
+  && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
+  && yum install -y tmux2u \
   && yum clean all -y \
   && wget -nH -q ftp://192.168.0.41/Dev_Linux_3rd-20190806.zip && unzip -q -j *.zip \
   && yum localinstall *.rpm -y \
