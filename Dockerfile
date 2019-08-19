@@ -6,8 +6,9 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
   && yum makecache \
   && yum -y install epel-release \
+  && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
   && yum install -y htop rsync pinfo strace iftop ethtool dsniff net-tools nc \
-    lsof perf tree wget unzip p7zip  zsh make git vim \
+    lsof perf tree wget unzip p7zip man man-pages  zsh make git vim \
     openssl openssl-devel curl curl-devel \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
@@ -17,6 +18,7 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && rm -rf *.rpm *.zip \
   && ldconfig \
   && usermod -s /bin/zsh root
+
 COPY tmux.conf $HOME/.tmux.conf
 ## USER 1001
 CMD ["zsh"]
