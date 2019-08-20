@@ -13,9 +13,10 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
   && yum clean all -y \
-  && wget -nH -q ftp://192.168.0.41/Dev_Linux_3rd-20190806.zip && unzip -q -j *.zip \
+  && wget -nH -q ftp://192.168.0.41/Dev_Linux_3rd.zip && unzip -q -j *.zip \
   && yum localinstall *.rpm -y \
   && rm -rf *.rpm *.zip \
+  && echo "/usr/lib/oracle/11.2/client64/lib" >> /etc/ld.so.conf.d/oracle.conf \
   && ldconfig \
   && usermod -s /bin/zsh root
 
