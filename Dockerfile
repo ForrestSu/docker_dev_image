@@ -9,7 +9,7 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
   && yum install -y htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nc \
     rsync pinfo lsof perf tree wget unzip p7zip file man man-pages  zsh make git vim \
-    openssl openssl-devel curl curl-devel \
+    openssl openssl-devel curl-devel libuuid-devel \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
   && yum clean all -y \
