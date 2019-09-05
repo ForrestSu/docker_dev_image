@@ -21,5 +21,7 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && usermod -s /bin/zsh root
 
 COPY tmux.conf $HOME/.tmux.conf
+COPY zshrc $HOME/.zshrc
+
 ## USER 1001
 CMD ["zsh"]
