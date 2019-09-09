@@ -17,6 +17,7 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
   && yum clean all -y \
+  && cp $HOME/.zshrc $HOME/.bashrc \
   && usermod -s /bin/zsh root
 CMD ["zsh"]
 
