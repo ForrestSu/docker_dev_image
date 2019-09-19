@@ -2,12 +2,12 @@
 This is a toolchain for c++ developer, build on centos 7.6, gcc v7.3.1, gdb v8.0.1
 
 ## Usage
-(1) run `sh build_image.sh` build centos image:
-or directly build `docker build -t uvframe https://github.com/ForrestSu/docker_dev_image.git`  
-means: `docker build -t uvframe .`
-
-> docker run -it --rm --name frame uvframe zsh
-
+(1) run `sh build_image.sh` build centos image:  
+    or directly build `docker build -t uvframe https://github.com/ForrestSu/docker_dev_image.git`  
+```
+$ docker build -t uvframe .
+$ docker run -it --rm --name frame uvframe zsh
+```
 
 (2) run `sh build_archlinux.sh` build archlinux image.
 
