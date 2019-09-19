@@ -1,0 +1,25 @@
+## images: <sunquana/archlinux>
+FROM archlinux/base
+
+ENV TZ=Asia/Shanghai
+ENV HOME=/home/sunquan
+WORKDIR /home/sunquan
+
+COPY tmux.conf $HOME/.tmux.conf
+COPY zshrc $HOME/.custom_rc
+## use tsinghua source, and update software package cache, and Import Chinese PGP Keys
+RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist \
+    && echo -e '[archlinuxcn]\nServer = https://repo.archlinuxcn.org/$arch' >> /etc/pacman.conf \
+    && pacman -Syy && pacman-key --init && pacman --noconfirm --needed -S --asdeps archlinuxcn-keyring \
+    && pacman --noconfirm --needed -S --asdeps \
+      htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
+      rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages fakeroot ninja make \
+      git vim awk zsh oh-my-zsh-git fish \
+      automake autoconf libtool doxygen cmake gcc \
+      openssl libuv zeromq tinyxml2 protobuf nanomsg \
+    && pacman --noconfirm -Scc \
+    && cp /usr/share/oh-my-zsh/zshrc ~/.zshrc && cat ~/.custom_rc >> ~/.zshrc \
+    && sed -i 's/%c/%d/' /usr/share/oh-my-zsh/themes/robbyrussell.zsh-theme \
+    && usermod -s /bin/zsh root \
+    && ldconfig
+CMD ["zsh"]
