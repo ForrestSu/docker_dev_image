@@ -1,0 +1,7 @@
+## images: <sunquana/centos7:os>
+FROM sunquana/centos7:base
+RUN yum -y install qemu nasm \
+    && yum clean all -y \
+    && ln -s /usr/bin/qemu-system-x86_64 /usr/bin/qemu
+
+CMD ["zsh"]

@@ -1,8 +1,9 @@
 ## images: <sunquana/archlinux>
 FROM archlinux/base
 
-ENV TZ=Asia/Shanghai
-ENV HOME=/home/sunquan
+ENV TZ=Asia/Shanghai \
+    HOME=/home/sunquan
+
 WORKDIR /home/sunquan
 
 COPY tmux.conf $HOME/.tmux.conf
