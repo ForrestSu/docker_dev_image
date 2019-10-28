@@ -15,7 +15,7 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
     && pacman --noconfirm --needed -S --asdeps \
       htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
       rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages fakeroot ninja make \
-      git openssh vim awk zsh oh-my-zsh-git fish \
+      tmux git vim awk zsh oh-my-zsh-git fish openssh\
       automake autoconf libtool doxygen cmake gcc \
       openssl libuv zeromq tinyxml2 protobuf nanomsg \
     && pacman --noconfirm -Scc \
