@@ -17,7 +17,7 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages fakeroot ninja make \
       tmux git vim awk zsh oh-my-zsh-git fish openssh\
       automake autoconf libtool doxygen cmake gcc \
-      openssl libuv zeromq tinyxml2 protobuf nanomsg grpc \
+      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc \
     && pacman --noconfirm -Scc \
     && cp /usr/share/oh-my-zsh/zshrc ~/.zshrc && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \
     && sed -i 's/%c/%d/' /usr/share/oh-my-zsh/themes/robbyrussell.zsh-theme \

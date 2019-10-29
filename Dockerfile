@@ -21,6 +21,7 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
 RUN yum install -y htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nc \
     rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages  zsh make git vim \
     openssl-devel curl-devel libuuid-devel boost-devel doxygen \
+    leveldb-devel gflags-devel \
     automake autoconf libtool \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
