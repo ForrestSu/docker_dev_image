@@ -1,0 +1,28 @@
+## images: <sunquana/archlinux>
+FROM ubuntu:latest
+
+ENV TZ=Asia/Shanghai \
+    HOME=/home/sunquan
+
+WORKDIR /home/sunquan
+
+COPY tmux.conf $HOME/.tmux.conf
+COPY zshrc $HOME/.custom_rc
+COPY sources.list $HOME/sources.list
+
+## use tsinghua source
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv $HOME/sources.list /etc/apt/ \
+    && apt-get update && apt-get -y upgrade \
+    && apt-get -y install \
+      man-db htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
+      zsh git vim tmux \
+    && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \
+    && usermod -s /bin/zsh root \
+    && ldconfig
+CMD ["zsh"]
+
+# && rm -rf /var/lib/apt/lists/* \
+# rsync pinfo lsof perf parallel tree wget unzip p7zip file make \
+#     awk fish openssh \
+#     automake autoconf libtool doxygen cmake gcc \
+#      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc \
