@@ -1,5 +1,5 @@
 ## images: <sunquana/centos7:base>
-FROM centos/devtoolset-7-toolchain-centos7 as base
+FROM centos:7 as base
 ENV TZ=Asia/Shanghai
 ENV HOME=/home/frame
 WORKDIR /home/frame
@@ -11,13 +11,21 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && yum makecache \
   && yum -y install epel-release \
   && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
-  && yum install -y htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nc \
+  && yum install -y centos-release-scl-rh \
+  && INSTALL_PKGS="bsdtar findutils gettext groff-base tar yum-utils \
+     scl-utils devtoolset-7-gcc devtoolset-7-gcc-c++ devtoolset-7-gdb" \
+  && yum install -y $INSTALL_PKGS \
+  && rpm -V $INSTALL_PKGS \
+  && yum -y clean all --enablerepo='*'
+
+RUN yum install -y htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nc \
     rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages  zsh make git vim \
     openssl-devel curl-devel libuuid-devel boost-devel doxygen \
     automake autoconf libtool \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
-  && yum clean all -y \
+  && yum -y clean all --enablerepo='*' \
+  && echo "source /opt/rh/devtoolset-7/enable" >> $HOME/.zshrc \
   && cp $HOME/.zshrc $HOME/.bashrc \
   && usermod -s /bin/zsh root
 CMD ["zsh"]
