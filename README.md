@@ -38,6 +38,22 @@ $ docker run -it --rm --name frame uvframe zsh
 - librdkafka v2.11 +
 
 
+
+### Configuration
+
+- Ubuntu 18.04
+
+`vim /etc/dpkg/dpkg.cfg.d/excludes`
+
+注释下面两行，表示安装软件时保留文档 和 man 手册
+
+```sh
+# Drop all man pages
+ path-exclude=/usr/share/man/*
+# Drop all documentation ...
+ path-exclude=/usr/share/doc/*
+```
+
 ### Changelog
 
 - 2019-07-16 14:43:15 sunquan create first version
