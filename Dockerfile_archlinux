@@ -14,10 +14,10 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
     && pacman -Syy && pacman-key --init && pacman --noconfirm --needed -S --asdeps archlinuxcn-keyring \
     && pacman --noconfirm --needed -S --asdeps \
       htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
-      rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages fakeroot ninja make \
-      tmux git vim awk zsh oh-my-zsh-git fish openssh\
-      automake autoconf libtool doxygen cmake gcc \
-      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc \
+      rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages make cmake gcc \
+      tmux git vim awk zsh oh-my-zsh-git fish openssh doxygen \
+      automake autoconf libtool ninja fakeroot \
+      zlib leveldb openssl libuv zeromq tinyxml2 nanomsg protobuf grpc gflags gtest \
     && pacman --noconfirm -Scc \
     && cp /usr/share/oh-my-zsh/zshrc ~/.zshrc && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \
     && sed -i 's/%c/%d/' /usr/share/oh-my-zsh/themes/robbyrussell.zsh-theme \
