@@ -1,5 +1,6 @@
-## images: <sunquana/archlinux>
-FROM ubuntu:latest
+FROM ubuntu:18.04
+
+LABEL maintainer="ForrestSu <sunquana@gmail.com>"
 
 ENV TZ=Asia/Shanghai \
     HOME=/home/sunquan
@@ -17,8 +18,20 @@ RUN yes | unminimize
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv $HOME/sources.list /etc/apt/ \
     && apt-get update && apt-get -y upgrade \
     && apt-get -y install \
-      apt-utils man-db htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
-      zsh git vim tmux \
+        autoconf \
+        apt-utils \
+        build-essential \
+        cmake \
+        curl \
+        git \
+        wget \
+        zstd \
+        unzip \
+        libtool \
+        liblz4-dev \
+        man-db \
+        htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
+        zsh vim tmux \
     && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \
     && usermod -s /bin/zsh root \
     && ldconfig
@@ -27,5 +40,5 @@ CMD ["zsh"]
 # && rm -rf /var/lib/apt/lists/* \
 # rsync pinfo lsof perf parallel tree wget unzip p7zip file make \
 #     awk fish openssh \
-#     automake autoconf libtool doxygen cmake gcc \
+#     automake autoconf libtool doxygen gcc \
 #      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc \

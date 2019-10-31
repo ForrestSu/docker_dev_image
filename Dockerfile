@@ -1,15 +1,22 @@
-## images: <sunquana/centos7:base>
+# images: <sunquana/centos7:base>
 FROM centos:7 as base
+
+LABEL maintainer="ForrestSu <sunquana@gmail.com>"
+
+ENV LC_ALL=en_US.utf8
+
 ENV TZ=Asia/Shanghai
+
 ENV HOME=/home/frame
 WORKDIR /home/frame
-USER 0
+
 COPY tmux.conf $HOME/.tmux.conf
 COPY zshrc $HOME/.zshrc
 RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
   && yum makecache \
   && yum -y install epel-release \
+  && yum groupinstall -y 'Development Tools' \
   && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
   && yum install -y centos-release-scl-rh \
   && INSTALL_PKGS="bsdtar findutils gettext groff-base tar yum-utils \

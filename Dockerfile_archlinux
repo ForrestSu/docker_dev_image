@@ -1,5 +1,7 @@
-## images: <sunquana/archlinux>
+# images: <sunquana/archlinux>
 FROM archlinux/base
+
+LABEL maintainer="ForrestSu <sunquana@gmail.com>"
 
 ENV TZ=Asia/Shanghai \
     HOME=/home/sunquan
