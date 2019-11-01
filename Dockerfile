@@ -25,8 +25,15 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && rpm -V $INSTALL_PKGS \
   && yum -y clean all --enablerepo='*'
 
-RUN yum install -y htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nc \
-    rsync pinfo lsof perf parallel tree wget unzip p7zip file man man-pages  zsh make git vim \
+RUN yum install -y \
+    telnet \
+    ethtool bwm-ng dsniff net-tools nc \
+    htop iotop iftop sysstat \
+    strace  \
+    rsync \
+    pinfo \
+    lsof \
+    perf parallel tree wget unzip p7zip file man man-pages  zsh make git vim \
     openssl-devel curl-devel libuuid-devel boost-devel doxygen \
     leveldb-devel gflags-devel \
     automake autoconf libtool \
