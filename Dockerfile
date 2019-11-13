@@ -16,27 +16,38 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
   && yum makecache \
   && yum -y install epel-release \
-  && yum groupinstall -y 'Development Tools' \
   && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
+  && yum groupinstall -y 'Development Tools' \
   && yum install -y centos-release-scl-rh \
-  && INSTALL_PKGS="bsdtar findutils gettext groff-base tar yum-utils \
+  && INSTALL_PKGS="findutils gettext groff-base tar yum-utils \
      scl-utils devtoolset-7-gcc devtoolset-7-gcc-c++ devtoolset-7-gdb" \
   && yum install -y $INSTALL_PKGS \
   && rpm -V $INSTALL_PKGS \
   && yum -y clean all --enablerepo='*'
 
 RUN yum install -y \
-    telnet \
-    ethtool bwm-ng dsniff net-tools nc \
+    telnet ethtool bwm-ng dsniff net-tools nc \
     htop iotop iftop sysstat \
     strace  \
     rsync \
     pinfo \
     lsof \
-    perf parallel tree wget unzip p7zip file man man-pages  zsh make git vim \
-    openssl-devel curl-devel libuuid-devel boost-devel doxygen \
+    perf \
+    parallel \
+    tree \
+    wget \
+    unzip \
+    p7zip \
+    file \
+    man \
+    man-pages \
+    doxygen \
+    vim \
+    zsh \
+    git \
+    make \
+    openssl-devel curl-devel libuuid-devel boost-devel \
     leveldb-devel gflags-devel \
-    automake autoconf libtool \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
   && yum -y clean all --enablerepo='*' \

@@ -15,11 +15,15 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
     && echo -e '[archlinuxcn]\nServer = https://repo.archlinuxcn.org/$arch' >> /etc/pacman.conf \
     && pacman -Syy && pacman-key --init && pacman --noconfirm --needed -S --asdeps archlinuxcn-keyring \
     && pacman --noconfirm --needed -S --asdeps \
+      which \
       inetutils ethtool net-tools iproute2 bwm-ng dsniff \
       htop iotop iftop sysstat \
       strace nmap lsof \
-      rsync pinfo perf parallel tree wget unzip p7zip file man man-pages make cmake gcc \
-      tmux git vim awk zsh oh-my-zsh-git fish openssh doxygen \
+      rsync pinfo perf parallel tree wget unzip p7zip file \
+      man man-pages \
+      make cmake \
+      gcc gdb doxygen \
+      tmux git vim awk zsh oh-my-zsh-git fish openssh \
       automake autoconf libtool ninja fakeroot \
       zlib leveldb openssl libuv zeromq tinyxml2 nanomsg protobuf grpc gflags gtest \
     && pacman --noconfirm -Scc \
