@@ -11,13 +11,15 @@ COPY tmux.conf $HOME/.tmux.conf
 COPY zshrc $HOME/.custom_rc
 COPY sources.list $HOME/sources.list
 
-## Unminimize
-RUN yes | unminimize
 
 ## use tsinghua source
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv $HOME/sources.list /etc/apt/ \
-    && apt-get update && apt-get -y upgrade \
-    && apt-get -y install \
+    && apt-get update && apt-get -y upgrade
+
+## Unminimize
+RUN yes | unminimize
+
+RUN apt-get -y install \
         autoconf \
         apt-utils \
         build-essential \
