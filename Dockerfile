@@ -28,11 +28,12 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
 RUN yum install -y \
     telnet ethtool bwm-ng dsniff net-tools nc \
     htop iotop iftop sysstat \
-    strace  \
+    strace \
     rsync \
     pinfo \
     lsof \
     perf \
+    tcpdump traceroute \
     parallel \
     tree \
     wget \
@@ -46,6 +47,7 @@ RUN yum install -y \
     zsh \
     git \
     make \
+    libaio-devel \
     openssl-devel curl-devel libuuid-devel boost-devel \
     leveldb-devel gflags-devel \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
