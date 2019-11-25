@@ -19,7 +19,16 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       inetutils ethtool net-tools iproute2 bwm-ng dsniff \
       htop iotop iftop sysstat \
       strace nmap lsof \
-      rsync pinfo perf parallel tree wget unzip p7zip file \
+      rsync \
+      tcpdump traceroute \
+      perf \
+      parallel \
+      pinfo \
+      tree \
+      wget \
+      unzip \
+      p7zip \
+      file \
       man man-pages \
       make cmake \
       gcc gdb doxygen \
