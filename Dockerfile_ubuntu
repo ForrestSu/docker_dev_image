@@ -23,6 +23,9 @@ RUN apt-get -y install \
         autoconf \
         apt-utils \
         build-essential \
+        tree \
+        iperf iperf3 \
+        lsof \
         cmake \
         curl \
         git \
@@ -40,7 +43,7 @@ RUN apt-get -y install \
 CMD ["zsh"]
 
 # && rm -rf /var/lib/apt/lists/* \
-# rsync pinfo lsof perf parallel tree wget unzip p7zip file make \
-#     awk fish openssh \
+# rsync pinfo perf parallel p7zip \
+#     fish openssh \
 #     automake autoconf libtool doxygen gcc \
 #      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc \

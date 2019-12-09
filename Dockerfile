@@ -34,6 +34,7 @@ RUN yum install -y \
     pinfo \
     lsof \
     perf \
+    iperf iperf3 \
     tcpdump traceroute \
     parallel \
     tree \

@@ -22,6 +22,7 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       rsync \
       tcpdump traceroute \
       perf \
+      iperf iperf3 \
       parallel \
       pinfo \
       tree \
