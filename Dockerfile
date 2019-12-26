@@ -11,6 +11,7 @@ ENV HOME=/home/frame
 WORKDIR /home/frame
 
 COPY tmux.conf $HOME/.tmux.conf
+COPY vimrc $HOME/.vimrc
 COPY zshrc $HOME/.zshrc
 RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \

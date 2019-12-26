@@ -10,6 +10,8 @@ WORKDIR /home/sunquan
 
 COPY tmux.conf $HOME/.tmux.conf
 COPY zshrc $HOME/.custom_rc
+COPY vimrc $HOME/.vimrc
+
 ## use tsinghua source, and update software package cache, and Import Chinese PGP Keys
 RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist \
     && echo -e '[archlinuxcn]\nServer = https://repo.archlinuxcn.org/$arch' >> /etc/pacman.conf \

@@ -9,6 +9,7 @@ WORKDIR /home/sunquan
 
 COPY tmux.conf $HOME/.tmux.conf
 COPY zshrc $HOME/.custom_rc
+COPY vimrc $HOME/.vimrc
 COPY sources.list $HOME/sources.list
 
 
@@ -46,4 +47,4 @@ CMD ["zsh"]
 # rsync pinfo perf parallel p7zip \
 #     fish openssh \
 #     automake autoconf libtool doxygen gcc \
-#      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc \
+#      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc
