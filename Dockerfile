@@ -50,6 +50,8 @@ RUN yum install -y \
     zsh \
     git \
     make \
+    cloc \
+    numactl \
     libaio-devel \
     openssl-devel curl-devel libuuid-devel boost-devel \
     leveldb-devel gflags-devel \

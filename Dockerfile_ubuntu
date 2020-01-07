@@ -36,6 +36,7 @@ RUN apt-get -y install \
         libtool \
         liblz4-dev \
         man-db \
+        cloc \
         htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
         zsh vim tmux \
     && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \

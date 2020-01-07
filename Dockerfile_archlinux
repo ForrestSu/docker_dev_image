@@ -36,6 +36,7 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       man man-pages \
       make cmake \
       gcc gdb doxygen \
+      cloc \
       tmux git vim awk zsh oh-my-zsh-git fish openssh \
       automake autoconf libtool ninja fakeroot \
       zlib leveldb openssl libuv zeromq tinyxml2 nanomsg protobuf grpc gflags gtest \
