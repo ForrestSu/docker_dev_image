@@ -54,6 +54,7 @@ RUN yum install -y \
     numactl \
     libaio-devel \
     openssl-devel curl-devel libuuid-devel boost-devel \
+    libsodium-devel \
     leveldb-devel gflags-devel \
   && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
   && yum install -y tmux2u \
