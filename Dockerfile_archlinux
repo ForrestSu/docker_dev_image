@@ -18,6 +18,7 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
     && pacman -Syy && pacman-key --init && pacman --noconfirm --needed -S --asdeps archlinuxcn-keyring \
     && pacman --noconfirm --needed -S --asdeps \
       which \
+      ascii \
       inetutils iputils ethtool net-tools iproute2 bwm-ng dsniff \
       htop iotop iftop sysstat \
       strace nmap lsof \
