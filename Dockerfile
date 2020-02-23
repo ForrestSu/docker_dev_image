@@ -29,6 +29,7 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
 RUN yum install -y \
     telnet ethtool bwm-ng dsniff net-tools nc \
     bind-utils \
+    pcre-tools \
     htop iotop iftop sysstat \
     ascii \
     strace \
