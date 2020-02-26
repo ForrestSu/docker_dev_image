@@ -40,6 +40,7 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       cloc \
       tmux git vim awk zsh oh-my-zsh-git fish openssh \
       automake autoconf libtool ninja fakeroot \
+      jemalloc \
       zlib leveldb openssl libuv zeromq tinyxml2 nanomsg protobuf grpc gflags gtest \
     && pacman --noconfirm -Scc \
     && cp /usr/share/oh-my-zsh/zshrc ~/.zshrc && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \

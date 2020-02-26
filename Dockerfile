@@ -55,6 +55,7 @@ RUN yum install -y \
     make \
     cloc \
     numactl \
+    jemalloc-devel \
     libaio-devel \
     openssl-devel curl-devel libuuid-devel boost-devel \
     libsodium-devel \
