@@ -38,12 +38,15 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       make cmake \
       gcc gdb doxygen \
       cloc \
-      tmux git vim awk zsh oh-my-zsh-git fish openssh \
+      tmux git vim awk zsh fish openssh \
+      oh-my-zsh-git \
       automake autoconf libtool ninja fakeroot \
       jemalloc \
       zlib leveldb openssl libuv zeromq tinyxml2 nanomsg protobuf grpc gflags gtest \
     && pacman --noconfirm -Scc \
-    && cp /usr/share/oh-my-zsh/zshrc ~/.zshrc && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \
+    && mv ~/.custom_rc ~/.zshrc \
+    # && echo "export PROMPT='[%n@%m]%~%# '" >> $HOME/.zshrc \
+    && echo "$(cat /usr/share/oh-my-zsh/zshrc ; cat ~/.zshrc)" > ~/.zshrc \
     && sed -i 's/%c/%d/' /usr/share/oh-my-zsh/themes/robbyrussell.zsh-theme \
     && usermod -s /bin/zsh root \
     && ldconfig
