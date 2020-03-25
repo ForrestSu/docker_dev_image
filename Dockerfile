@@ -54,6 +54,7 @@ RUN yum install -y \
     git \
     make \
     cloc \
+    patchelf \
     numactl \
     jemalloc-devel \
     libaio-devel \

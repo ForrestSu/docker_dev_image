@@ -17,11 +17,13 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
     && echo -e '[archlinuxcn]\nServer = https://repo.archlinuxcn.org/$arch' >> /etc/pacman.conf \
     && pacman -Syy && pacman-key --init && pacman --noconfirm --needed -S --asdeps archlinuxcn-keyring \
     && pacman --noconfirm --needed -S --asdeps \
+      inetutils iputils ethtool net-tools iproute2 bwm-ng dsniff \
+      nmap \
       which \
       ascii \
-      inetutils iputils ethtool net-tools iproute2 bwm-ng dsniff \
       htop iotop iftop sysstat \
-      strace nmap lsof \
+      lsof \
+      strace \
       rsync \
       tcpdump traceroute \
       perf \
@@ -36,9 +38,10 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       dos2unix \
       man man-pages \
       make cmake \
+      tmux git vim awk zsh fish openssh \
       gcc gdb doxygen \
       cloc \
-      tmux git vim awk zsh fish openssh \
+      patchelf \
       oh-my-zsh-git \
       automake autoconf libtool ninja fakeroot \
       jemalloc \
