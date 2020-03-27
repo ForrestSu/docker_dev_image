@@ -15,3 +15,7 @@ set cindent
 map <C-A> ggVGY
 " 自动缩进为4空格
 set shiftwidth=4
+" 检测文件类型
+filetype on
+" 语法高亮
+syntax on
