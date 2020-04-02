@@ -1,0 +1,7 @@
+## images: <sunquana/archlinux:seastar>
+FROM sunquana/archlinux:latest as seastar
+
+COPY install-dependencies.sh $HOME/
+RUN  sh ./install-dependencies.sh
+
+CMD ["zsh"]
