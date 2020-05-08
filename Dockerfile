@@ -57,6 +57,7 @@ RUN yum install -y \
     patchelf \
     numactl \
     jemalloc-devel \
+    mtr \
     libaio-devel \
     openssl-devel curl-devel libuuid-devel boost-devel \
     libsodium-devel \

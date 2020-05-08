@@ -46,6 +46,7 @@ RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/
       automake autoconf libtool ninja fakeroot \
       libaio \
       jemalloc \
+      mtr \
       zlib leveldb openssl libuv zeromq tinyxml2 nanomsg protobuf grpc gflags gtest \
     && pacman --noconfirm -Scc \
     && mv ~/.custom_rc ~/.zshrc \
