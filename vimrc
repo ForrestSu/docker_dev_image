@@ -7,7 +7,7 @@ set tabstop=4
 " Tab转为空格
 set expandtab
 " 换行时,自动获取当前行的缩进
-set autoindent
+" set autoindent
 " 开启C语言的缩进风格
 set cindent
 "键盘配置

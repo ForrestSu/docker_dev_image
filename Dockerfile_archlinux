@@ -1,5 +1,5 @@
 # images: <sunquana/archlinux>
-FROM archlinux/base
+FROM archlinux:latest
 
 LABEL maintainer="ForrestSu <sunquana@gmail.com>"
 
@@ -11,43 +11,13 @@ WORKDIR /home/sunquan
 COPY tmux.conf $HOME/.tmux.conf
 COPY zshrc $HOME/.custom_rc
 COPY vimrc $HOME/.vimrc
+COPY install-dependencies.sh .
 
-## use tsinghua source, and update software package cache, and Import Chinese PGP Keys
+## use tsinghua source, and update software package cache, and import Chinese PGP keys
 RUN sed -i '1i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist \
     && echo -e '[archlinuxcn]\nServer = https://repo.archlinuxcn.org/$arch' >> /etc/pacman.conf \
     && pacman -Syy && pacman-key --init && pacman --noconfirm --needed -S --asdeps archlinuxcn-keyring \
-    && pacman --noconfirm --needed -S --asdeps \
-      inetutils iputils ethtool net-tools iproute2 bwm-ng dsniff \
-      nmap \
-      which \
-      ascii \
-      htop iotop iftop sysstat \
-      lsof \
-      strace \
-      rsync \
-      tcpdump traceroute \
-      perf \
-      iperf iperf3 \
-      parallel \
-      pinfo \
-      tree \
-      wget \
-      unzip \
-      p7zip \
-      file \
-      dos2unix \
-      man man-pages \
-      make cmake \
-      tmux git vim awk zsh fish openssh \
-      gcc gdb doxygen \
-      cloc \
-      patchelf \
-      oh-my-zsh-git \
-      automake autoconf libtool ninja fakeroot \
-      libaio \
-      jemalloc \
-      mtr \
-      zlib leveldb openssl libuv zeromq tinyxml2 nanomsg protobuf grpc gflags gtest \
+    && ./install-dependencies.sh \
     && pacman --noconfirm -Scc \
     && mv ~/.custom_rc ~/.zshrc \
     # && echo "export PROMPT='[%n@%m]%~%# '" >> $HOME/.zshrc \

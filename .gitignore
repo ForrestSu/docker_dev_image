@@ -1,19 +1,18 @@
 .DS_Store
 
 # eclipse
-.settings
+.settings/
+Default/
 .project
 .cproject
 .classpath
-Default
-.metadata
 
 # IDEA
-.idea
+.idea/
 *.iml
 
 #vscode
-.vscode
+.vscode/
 
 # vs projects
 .sln

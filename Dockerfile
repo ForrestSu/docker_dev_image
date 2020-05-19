@@ -13,61 +13,24 @@ WORKDIR /home/frame
 COPY tmux.conf $HOME/.tmux.conf
 COPY vimrc $HOME/.vimrc
 COPY zshrc $HOME/.zshrc
-RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
-  && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
-  && yum makecache \
-  && yum -y install epel-release \
-  && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
-  && yum groupinstall -y 'Development Tools' \
-  && yum install -y centos-release-scl-rh \
-  && INSTALL_PKGS="findutils gettext groff-base tar yum-utils \
-     scl-utils devtoolset-7-gcc devtoolset-7-gcc-c++ devtoolset-7-gdb" \
-  && yum install -y $INSTALL_PKGS \
-  && rpm -V $INSTALL_PKGS \
-  && yum -y clean all --enablerepo='*'
+COPY install-dependencies.sh .
 
-RUN yum install -y \
-    telnet ethtool bwm-ng dsniff net-tools nc \
-    nmap \
-    bind-utils \
-    pcre-tools \
-    htop iotop iftop sysstat \
-    ascii \
-    strace \
-    rsync \
-    pinfo \
-    lsof \
-    perf \
-    iperf iperf3 \
-    tcpdump traceroute \
-    parallel \
-    tree \
-    wget \
-    unzip \
-    p7zip \
-    file \
-    man \
-    man-pages \
-    doxygen \
-    vim \
-    zsh \
-    git \
-    make \
-    cloc \
-    patchelf \
-    numactl \
-    jemalloc-devel \
-    mtr \
-    libaio-devel \
-    openssl-devel curl-devel libuuid-devel boost-devel \
-    libsodium-devel \
-    leveldb-devel gflags-devel \
-  && yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
+RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
+  && curl -#o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
+  && yum makecache \
+  && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
+  && yum install -y epel-release centos-release-scl-rh scl-utils \
+  && yum install -y findutils gettext groff-base yum-utils tar \
+  && ./install-dependencies.sh \
+  && rpm -e tmux \
+  && yum -y install https://repo.ius.io/ius-release-el7.rpm \
   && yum install -y tmux2u \
   && yum -y clean all --enablerepo='*' \
+  && rm -f install-dependencies.sh \
   && echo "source /opt/rh/devtoolset-7/enable" >> $HOME/.zshrc \
   && cp $HOME/.zshrc $HOME/.bashrc \
   && usermod -s /bin/zsh root
+
 CMD ["zsh"]
 
 ## use local 3rdparty rpm

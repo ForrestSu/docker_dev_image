@@ -11,41 +11,18 @@ COPY tmux.conf $HOME/.tmux.conf
 COPY zshrc $HOME/.custom_rc
 COPY vimrc $HOME/.vimrc
 COPY sources.list $HOME/sources.list
-
+COPY install-dependencies.sh .
 
 ## use tsinghua source
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv $HOME/sources.list /etc/apt/ \
-    && apt-get update && apt-get -y upgrade
+    && apt-get update && apt-get -y upgrade \
+    && apt-get install -y apt-utils build-essential
 
 ## Unminimize
 RUN yes | unminimize
 
-RUN apt-get -y install \
-        autoconf \
-        apt-utils \
-        build-essential \
-        tree \
-        iperf iperf3 \
-        lsof \
-        cmake \
-        curl \
-        git \
-        wget \
-        zstd \
-        unzip \
-        libtool \
-        liblz4-dev \
-        man-db \
-        cloc \
-        htop iotop iftop sysstat strace ethtool bwm-ng dsniff net-tools nmap iproute2 \
-        zsh vim tmux \
+RUN ./install-dependencies.sh \
     && cat ~/.custom_rc >> ~/.zshrc && rm ~/.custom_rc \
     && usermod -s /bin/zsh root \
     && ldconfig
 CMD ["zsh"]
-
-# && rm -rf /var/lib/apt/lists/* \
-# rsync pinfo perf parallel p7zip \
-#     fish openssh \
-#     automake autoconf libtool doxygen gcc \
-#      openssl libuv zeromq tinyxml2 protobuf nanomsg leveldb gflags grpc
