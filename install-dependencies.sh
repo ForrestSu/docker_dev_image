@@ -88,6 +88,7 @@ centos_packages=(
     devtoolset-7-gdb
     # dev-libs
     jemalloc-devel
+    lz4-devel
     boost-devel
     libaio-devel
     leveldb-devel
