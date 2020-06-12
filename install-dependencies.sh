@@ -97,6 +97,7 @@ centos_packages=(
     openssl-devel
     libcurl-devel
     gflags-devel
+    yaml-cpp-devel
 )
 
 # 1) glibc 2.30-3 has sys/sdt.h (systemtap include)
