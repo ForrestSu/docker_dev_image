@@ -57,7 +57,7 @@ centos_packages=(
     libuuid-devel
     libsodium-devel
     libcurl-devel
-    yaml-cpp-devel
+    #yaml-cpp-devel
 )
 
 # 1) glibc 2.30-3 has sys/sdt.h (systemtap include)
