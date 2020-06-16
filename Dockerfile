@@ -33,15 +33,6 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
 
 CMD ["zsh"]
 
-## use local 3rdparty rpm
-## images: <sunquana/centos7:mini>
-FROM sunquana/centos7:base as mini
-COPY pkgs .
-RUN yum localinstall *.rpm -y \
-  && rm -rf *.rpm \
-  && ldconfig
-CMD ["zsh"]
-
 ## complete dev environment
 ## images: <sunquana/centos7:latest>
 FROM sunquana/centos7:base as dev
@@ -51,4 +42,17 @@ RUN wget -nH -q ftp://192.168.0.41/Dev_Linux_3rd.zip && unzip -q -j *.zip \
   && echo "/usr/lib/oracle/11.2/client64/lib" >> /etc/ld.so.conf.d/oracle.conf \
   && ldconfig
 CMD ["zsh"]
+
+
+## use local 3rdparty rpm
+## images: <sunquana/centos7:mini>
+FROM sunquana/centos7:base as mini
+COPY centos7_deploy/pkgs .
+COPY centos7_deploy/optional_pkgs .
+RUN yum localinstall *.rpm -y \
+  && rm -rf *.rpm \
+  && ldconfig
+CMD ["zsh"]
+
+
 
