@@ -3,4 +3,6 @@ alias ll='ls -al -h --color=auto'
 
 sysctl -w kernel.core_pattern=/tmp/core-%e-%p-%t > /dev/null
 
+# source /opt/rh/devtoolset-7/enable
+
 ulimit -c unlimited

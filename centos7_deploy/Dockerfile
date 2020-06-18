@@ -24,7 +24,6 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && yum localinstall *.rpm -y && rm -rf *.rpm && ldconfig \
   && yum -y clean all --enablerepo='*' \
   && rm -f install-dependencies.sh \
-  && echo "source /opt/rh/devtoolset-7/enable" >> $HOME/.zshrc \
   && cp $HOME/.zshrc $HOME/.bashrc \
   && usermod -s /bin/zsh root
 

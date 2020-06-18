@@ -15,6 +15,7 @@ basic_tools=(
     tree
     zsh
     tcpdump ## net tools
+    bind-utils # nslookup
     net-tools
     ethtool
     htop ## top tools
@@ -47,11 +48,12 @@ ubuntu_packages=(
 # centos7
 centos_packages=(
     "${basic_tools[@]}"
+    # rpm-build
     # vim-enhanced
     telnet
     iproute   # ss
-    gcc-c++    # gcc4.8.5
-    devtoolset-7-gcc-c++
+    gcc-c++   # gcc4.8.5
+    # devtoolset-7-gcc-c++
     # devtoolset-7-gdb
     # boost-devel
     libuuid-devel

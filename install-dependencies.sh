@@ -80,7 +80,7 @@ centos_packages=(
     telnet
     nmap-ncat # nc
     iproute   # ss
-    bind-utils # dig
+    bind-utils # dig nslookup
     pcre-tools # regex test
     numactl
     gcc-c++    # gcc4.8.5
@@ -98,6 +98,7 @@ centos_packages=(
     libcurl-devel
     gflags-devel
     yaml-cpp-devel
+    rpm-build
 )
 
 # 1) glibc 2.30-3 has sys/sdt.h (systemtap include)
