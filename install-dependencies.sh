@@ -98,7 +98,9 @@ centos_packages=(
     libcurl-devel
     gflags-devel
     yaml-cpp-devel
+    # others
     rpm-build
+    bridge-utils # brctl
 )
 
 # 1) glibc 2.30-3 has sys/sdt.h (systemtap include)
