@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi
+spec:
+  parallelism: 2 # job最大并行度 (默认为1)
+  completions: 4 # job完成次数 (默认为1,部署后不允许修改)
+  backoffLimit: 4 # 启动失败，尝试重启的最大次数 (采用指数退避策略)
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: resouer/ubuntu-bc 
+        command: ["sh", "-c", "echo 'scale=10000; 4*a(1)' | bc -l "]
+      restartPolicy: Never
+
+

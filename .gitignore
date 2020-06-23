@@ -39,3 +39,6 @@ build
 
 # compress files
 *.zip
+
+# self
+k8s/batch_jobs/jobs/
