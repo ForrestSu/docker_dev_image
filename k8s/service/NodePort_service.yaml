@@ -1,0 +1,22 @@
+---
+# service: nginx
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-vip
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  type: NodePort
+  ports:
+  - nodePort: 13245 # 用于外部访问：宿主机IP+ port:13245
+    port: 8080      # vip 方式内部访问
+    targetPort: 80  # pod 内使用的端口
+    protocol: TCP
+    name: http
+  - nodePort: 443 # pod内端口不指定时,默认和nodePort相同
+    protocol: TCP
+    name: https
+

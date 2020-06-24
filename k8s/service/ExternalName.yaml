@@ -1,0 +1,11 @@
+---
+# service: nginx
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-vip
+spec:
+  # 这里不需要指定 selector
+  type: ExternalName
+  externalName: my.database.example.com
+
