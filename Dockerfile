@@ -24,7 +24,7 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && ./install-dependencies.sh \
   && rpm -e tmux \
   && yum -y install https://repo.ius.io/ius-release-el7.rpm \
-  && yum install -y tmux2u \
+  && yum install -y tmux2 \
   && yum -y clean all --enablerepo='*' \
   && rm -f install-dependencies.sh \
   && cp $HOME/.zshrc $HOME/.bashrc \
