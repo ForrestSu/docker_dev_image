@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo
+        image: framework:v1.2
+        resources:
+          requests: # 请求量服务运行时资源要求
+            memory: "64Mi"
+            cpu: "250m"
+          limits: # 资源最大限制
+            memory: "128Mi"
+            cpu: "500m"

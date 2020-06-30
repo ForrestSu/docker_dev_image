@@ -81,6 +81,7 @@ centos_packages=(
     nmap-ncat # nc
     iproute   # ss
     bind-utils # dig nslookup
+    psmisc     # pstree
     pcre-tools # regex test
     numactl
     gcc-c++    # gcc4.8.5
