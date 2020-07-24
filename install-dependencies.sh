@@ -100,6 +100,7 @@ centos_packages=(
     gflags-devel
     yaml-cpp-devel
     # others
+    # goaccess  # tool analysis nginx access.log
     rpm-build
     bridge-utils # brctl
 )
@@ -145,7 +146,6 @@ arch_packages=(
     lz4
     libuv    # async-cpp
     zeromq
-    nanomsg
     tinyxml2 # configures
     yaml-cpp
     gflags   # google
@@ -157,6 +157,8 @@ arch_packages=(
 if [ "$ID" = "ubuntu" ] || [ "$ID" = "debian" ]; then
     apt-get install -y "${ubuntu_packages[@]}"
 elif [ "$ID" = "centos" ]; then
+    yum install -y epel-release centos-release-scl-rh scl-utils
+    yum install -y findutils gettext groff-base yum-utils tar
     yum install -y "${centos_packages[@]}"
     rpm -V "${centos_packages[@]}" # || exit 0
 elif [ "$ID" = "arch" ]; then

@@ -19,8 +19,6 @@ RUN mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak \
   && curl -#o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo \
   && yum makecache \
   && sed -i '/tsflags=nodocs/s/^/#/' /etc/yum.conf \
-  && yum install -y epel-release centos-release-scl-rh scl-utils \
-  && yum install -y findutils gettext groff-base yum-utils tar \
   && ./install-dependencies.sh \
   && rpm -e tmux \
   && yum -y install https://repo.ius.io/ius-release-el7.rpm \
