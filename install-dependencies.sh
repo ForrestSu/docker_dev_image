@@ -121,6 +121,7 @@ arch_packages=(
     inetutils # telnet
     iputils
     iproute2 # ss
+    bind # dig nslookup
     awk
     which
     openssh
