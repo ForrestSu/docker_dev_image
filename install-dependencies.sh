@@ -98,7 +98,6 @@ centos_packages=(
     openssl-devel
     libcurl-devel
     gflags-devel
-    yaml-cpp-devel
     # others
     # goaccess  # tool analysis nginx access.log
     rpm-build
