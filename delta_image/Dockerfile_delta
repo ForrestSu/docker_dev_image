@@ -1,6 +1,0 @@
-## images: <sunquana/centos7:delta>
-FROM sunquana/centos7:dev as delta
-RUN echo "" >> $HOME/.zshrc \
-    && echo "alias ll='ls -al -h --color=auto'" >> $HOME/.zshrc \
-    && cp $HOME/.zshrc $HOME/.bashrc
-CMD ["zsh"]
