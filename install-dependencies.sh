@@ -136,8 +136,6 @@ arch_packages=(
     cmake
     python   # python3
     # dev-libs
-    boost
-    boost-libs
     jemalloc
     libaio
     leveldb
