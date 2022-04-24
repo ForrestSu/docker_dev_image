@@ -1,0 +1,38 @@
+version: '3'
+services:
+  gerrit:
+    image: gerritcodereview/gerrit
+    ports:
+      - "29418:29418"
+      - "8010:8080"
+    depends_on:
+      - ldap
+    volumes:
+      # /data/gerrit 更改为自己的路径
+      - /data/gerrit/conf/etc:/var/gerrit/etc
+      - /data/gerrit/conf/git:/var/gerrit/git
+      - /data/gerrit/conf/db:/var/gerrit/db
+      - /data/gerrit/conf/index:/var/gerrit/index
+      - /data/gerrit/conf/cache:/var/gerrit/cache
+    environment:
+      - CANONICAL_WEB_URL=http://localhost
+    network_mode: bridge
+    #entrypoint: /entrypoint.sh init
+  ldap:
+    image: osixia/openldap
+    ports:
+      - "389:389"
+      - "636:636"
+    environment:
+      - LDAP_ADMIN_PASSWORD=secret
+    network_mode: bridge
+    volumes:
+      - /data/gerrit/conf/ldap/var:/var/lib/ldap
+      - /data/gerrit/conf/ldap/etc:/etc/ldap/slapd.d
+  ldap-admin:
+    image: osixia/phpldapadmin
+    ports:
+      - "6443:443"
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap
+    network_mode: bridge
