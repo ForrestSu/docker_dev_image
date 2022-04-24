@@ -9,15 +9,14 @@ services:
       - ldap
     volumes:
       # /data/gerrit 更改为自己的路径
-      - /data/gerrit/conf/etc:/var/gerrit/etc
-      - /data/gerrit/conf/git:/var/gerrit/git
-      - /data/gerrit/conf/db:/var/gerrit/db
-      - /data/gerrit/conf/index:/var/gerrit/index
-      - /data/gerrit/conf/cache:/var/gerrit/cache
+      - /data/gerrit/etc:/var/gerrit/etc
+      - /data/gerrit/git:/var/gerrit/git
+      - /data/gerrit/db:/var/gerrit/db
+      - /data/gerrit/index:/var/gerrit/index
+      - /data/gerrit/cache:/var/gerrit/cache
     environment:
       - CANONICAL_WEB_URL=http://localhost
-    network_mode: bridge
-    #entrypoint: /entrypoint.sh init
+    command: init
   ldap:
     image: osixia/openldap
     ports:
@@ -25,14 +24,12 @@ services:
       - "636:636"
     environment:
       - LDAP_ADMIN_PASSWORD=secret
-    network_mode: bridge
     volumes:
-      - /data/gerrit/conf/ldap/var:/var/lib/ldap
-      - /data/gerrit/conf/ldap/etc:/etc/ldap/slapd.d
+      - /data/gerrit/ldap/var:/var/lib/ldap
+      - /data/gerrit/ldap/etc:/etc/ldap/slapd.d
   ldap-admin:
     image: osixia/phpldapadmin
     ports:
       - "6443:443"
     environment:
       - PHPLDAPADMIN_LDAP_HOSTS=ldap
-    network_mode: bridge
