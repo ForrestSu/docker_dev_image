@@ -23,7 +23,6 @@ basic_tools=(
     man-db
     tmux  ## effective
     parallel
-    pinfo
     stow
     tcpdump ## net tools
     traceroute

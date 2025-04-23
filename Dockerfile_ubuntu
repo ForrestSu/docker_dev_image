@@ -1,11 +1,36 @@
-FROM ubuntu:18.04
+FROM ubuntu:latest AS tesseract5
+LABEL maintainer="ForrestSu <sunquana@gmail.com>"
+
+ENV TZ=Asia/Shanghai \
+    HOME=/home/sq
+
+WORKDIR /home/sq
+
+COPY sources.list $HOME/sources.list
+## use tsinghua source
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv $HOME/sources.list /etc/apt/ \
+    && apt-get update && apt-get -y upgrade \
+    && apt-get install -y apt-utils build-essential
+
+RUN apt-get install -y zsh git wget vim htop \
+	&& apt-get install -y tesseract-ocr tesseract-ocr-chi-sim
+
+ENV LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8
+
+CMD ["zsh"]
+
+#=======================================================#
+
+FROM ubuntu:latest AS dev
 
 LABEL maintainer="ForrestSu <sunquana@gmail.com>"
 
 ENV TZ=Asia/Shanghai \
-    HOME=/home/sunquan
+    HOME=/home/sq
 
-WORKDIR /home/sunquan
+WORKDIR /home/sq
 
 COPY tmux.conf $HOME/.tmux.conf
 COPY zshrc $HOME/.custom_rc
