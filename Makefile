@@ -8,13 +8,8 @@ centos7:
 # docker build --target dev -t sunquana/centos7:latest .
 
 # ubuntu
-ubuntu_tesseract5:
-	docker build -f Dockerfile_ubuntu --target tesseract5 -t sunquana/ubuntu:tesseract5 .
 ubuntu:
 	docker build -f Dockerfile_ubuntu --target dev -t sunquana/ubuntu .
-
-## usage
-# docker run -it --privileged --name tess sunquana/ubuntu:tesseract5 zsh
 
 # archlinux
 archlinux:

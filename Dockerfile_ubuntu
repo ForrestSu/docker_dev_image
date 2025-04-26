@@ -1,28 +1,3 @@
-FROM ubuntu:25.04 AS tesseract5
-LABEL maintainer="ForrestSu <sunquana@gmail.com>"
-
-ENV TZ=Asia/Shanghai \
-    HOME=/home/sq
-
-WORKDIR /home/sq
-
-COPY sources.list $HOME/sources.list
-## use tsinghua source
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv $HOME/sources.list /etc/apt/ \
-    && apt-get update && apt-get -y upgrade \
-    && apt-get install -y apt-utils build-essential
-
-RUN apt-get install -y zsh git wget vim htop \
-	&& apt-get install -y tesseract-ocr tesseract-ocr-chi-sim
-
-ENV LC_ALL=en_US.UTF-8 \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US.UTF-8
-
-CMD ["zsh"]
-
-#=======================================================#
-
 FROM ubuntu:25.04 AS dev
 
 LABEL maintainer="ForrestSu <sunquana@gmail.com>"

@@ -1,7 +1,0 @@
-## images: <sunquana/centos7:go>
-FROM sunquana/centos7:base
-
-# default GOPATH is "~/go"
-RUN yum -y install go
-
-CMD ["zsh"]
