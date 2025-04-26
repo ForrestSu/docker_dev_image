@@ -1,4 +1,4 @@
-FROM ubuntu:latest AS tesseract5
+FROM ubuntu:25.04 AS tesseract5
 LABEL maintainer="ForrestSu <sunquana@gmail.com>"
 
 ENV TZ=Asia/Shanghai \
@@ -23,7 +23,7 @@ CMD ["zsh"]
 
 #=======================================================#
 
-FROM ubuntu:latest AS dev
+FROM ubuntu:25.04 AS dev
 
 LABEL maintainer="ForrestSu <sunquana@gmail.com>"
 
